@@ -10,28 +10,44 @@ function computerPlay(){
         return "SCICCORS";
 }
 
-function humanPlay(){
-    return prompt("Rock,paper or sciccors").toUpperCase();
+function winner(){
+    buttons.forEach((button)=>{
+        button.disabled=true;
+    })
+    gameState=1;
+    if(counter>loseCounter)
+        console.log("WINNER");
+    else
+        console.log("LOSER");
 }
 
-let counter=0;
-let loseCounter=0;
-
-while (loseCounter<3&&counter<3) {
-    let human=humanPlay();
+function playRound(human){
     let pc=computerPlay();
     if(pc==human){
-        console.log("tie");
+        moreinfo.textContent="TIE";
     }else if(human=="ROCK"&&pc=="PAPER"||human=="PAPER"&&pc=="SCICCORS"||human=="SCICCORS"&&pc=="ROCK"){
-        console.log("LOSE");
+        moreinfo.textContent="LOSE";
         loseCounter++;
     }else{
-        console.log("WIN");
+        moreinfo.textContent="WIN";
         counter++;
     } 
-    console.log(`PC(${loseCounter}): ${pc}\tHuman(${counter}): ${human}`);
+    score.textContent=`PC(${loseCounter}): ${pc}\tHuman(${counter}): ${human}`;
+    if(loseCounter>=3||counter>=3)
+        winner();
+
 }
-if(counter>loseCounter)
-    console.log("WINNER");
-    else
-    console.log("LOSER");
+let counter=0;
+let loseCounter=0;
+let gameState=0;
+
+const buttons=document.querySelectorAll('button');
+const score=document.querySelector('.score')
+console.log(score);
+const moreinfo=document.querySelector('.moreinfo')
+buttons.forEach((button)=>{
+    button.addEventListener('click',(e)=>playRound(e.target.className.toUpperCase()));
+})
+
+
+
