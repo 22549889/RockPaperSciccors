@@ -31,7 +31,8 @@ function newGame(){
     })
     restart.disabled=true;
     counter=loseCounter=round=0;
-    score.textContent=`Your score: ${counter} | Computer score: ${loseCounter} `;
+    score.textContent=`Your score: ${counter}` ;
+    scorepc.textContent=`Computer score: ${loseCounter} `
     moreinfo.textContent=`Lets go pussy!`;
     log.textContent="";
 }
@@ -60,7 +61,8 @@ function playRound(human,e){
         moreinfo.textContent=`${human} beats ${pc}`;
         counter++;
     } 
-    score.textContent=`Your score: ${counter} | Computer score: ${loseCounter}`;
+    score.textContent=`Your score: ${counter}`;
+    scorepc.textContent=`Computer score: ${loseCounter}`
     pround.textContent=`Round: ${round}`
     const p=document.createElement('p');
     p.textContent=`Round ${round}: ${moreinfo.textContent}`;
@@ -77,6 +79,7 @@ const restart=document.querySelector('.restart');
 const pround=document.querySelector('.round');
 const log=document.querySelector('.log');
 const computer=document.querySelector('.pc');
+const scorepc=document.querySelector('.scorepc');
 restart.disabled=true;
 restart.style="display: none;"
 const moreinfo=document.querySelector('.moreinfo')

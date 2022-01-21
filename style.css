@@ -28,7 +28,9 @@ body{
     align-content: center;
     text-align: center;
     border-radius: 16px;
-
+}
+.two{
+    margin-top: 0px;
 }
 .buttons{
     display: flex;
@@ -51,6 +53,7 @@ body{
     scale: 1.05;
     background-color:  ghostwhite;
 }
+
 .info button{
     height: 150px;
     width: 150px;
@@ -80,19 +83,19 @@ i{
     pointer-events: none;
 }
 .log{
-   display: block;
+    line-height: 1em;
     background-color: mediumorchid;
-    height: 350px;
-    width: 40%;
+    height: 90%;
+    width: 54%;
     margin-left: auto;
-    overflow: auto;
+    overflow-y:auto;
     border-radius: 5%;
     padding: 5px
 
 }
 .bottom{
     justify-self: flex-start;
-    width: 37%;
+    width: 30%;
 }
 .move{
     text-align: start;
