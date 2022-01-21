@@ -3,13 +3,11 @@ body{
     flex-direction: column;
     margin: 0px;
     height: 100vh;
+    background-color: mediumslateblue;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.header{
-    background-color: aquamarine;
-    text-align: center;
-}
-.footer{
-    background-color: aquamarine;
+.header,.footer{
+    background-color: mediumpurple;
     text-align: center;
 }
 .info{
@@ -19,42 +17,87 @@ body{
 }
 
 .box{
+    display: flex;
+    flex-direction: column;
     flex: 1;
-    margin: 0px 30%;
+    margin: 3% 30%;
     display: flex;
     height: 50%;
+    background-color: mediumpurple;
+    padding: 16px 32px;
+    align-content: center;
+    text-align: center;
+    border-radius: 16px;
+
 }
 .buttons{
-  flex: 1;
     display: flex;
-    justify-content: space-between;
-    gap: 16px;
+    justify-content: center;
     align-items: center;
+    height: 100%;
+    gap: 16px;
 }
 .buttons button{
-    height: 50%;
-    width: 25%;
-    /* cursor: pointer; */
+    height: 150px;
+    width: 150px;
+    transition: 0.05s;
+    border-radius: 5%;
+    border: 5px solid black;
+    background-color: mediumorchid;
+    color: black;
+}
+
+.buttons > button:enabled:hover{
+    scale: 1.05;
+    background-color:  ghostwhite;
 }
 .info button{
-    height: 50%;
-    width: 25%;
+    height: 150px;
+    width: 150px;
+    border-radius: 5%;
+    border: 5px solid black;
+    background-color: mediumorchid;
+    color: black;
+}
+
+.restart:hover{
+    scale: 1.05;
+    background-color: ghostwhite!important;
 }
 .info .restart{
     height: 64px;
     width: 128px;
+    border-radius: 5%;
+    border: 5px solid black;
+    background-color: mediumorchid;
+}
+.info{
+    text-align: start;
+    height: 100%;
 }
 i{
     font-size: 3vw;
     pointer-events: none;
 }
 .log{
-    background-color: aqua;
-    height: 50%;
-    width: 25%;
+   display: block;
+    background-color: mediumorchid;
+    height: 350px;
+    width: 40%;
     margin-left: auto;
     overflow: auto;
+    border-radius: 5%;
+    padding: 5px
+
 }
 .bottom{
-    justify-self: flex-start
+    justify-self: flex-start;
+    width: 37%;
+}
+.move{
+    text-align: start;
+}
+h3{
+    margin-top: 0;
+    margin-bottom: 6px;
 }
