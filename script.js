@@ -1,5 +1,3 @@
-console.log("Running");
-
 function computerPlay(){
     let choice=Math.floor(Math.random()*3);
     if(choice==0){
@@ -14,40 +12,58 @@ function winner(){
     buttons.forEach((button)=>{
         button.disabled=true;
     })
-    gameState=1;
+    restart.disabled=false;
     if(counter>loseCounter)
-        console.log("WINNER");
+        moreinfo.textContent=`You win!`;
     else
-        console.log("LOSER");
+        moreinfo.textContent=`You lose`;
 }
 
-function playRound(human){
+
+function newGame(){
+    buttons.forEach((button)=>{
+        button.disabled=false;
+    })
+    restart.disabled=true;
+    counter=loseCounter=round=0;
+    score.textContent=`Your score: ${counter} | Computer score: ${loseCounter} `;
+    moreinfo.textContent=`Lets go`;
+    log.innerHTML="";
+}
+
+function playRound(human,e){
+    round++;
     let pc=computerPlay();
     if(pc==human){
-        moreinfo.textContent="TIE";
+        moreinfo.textContent=`${human} equals ${pc}`;
     }else if(human=="ROCK"&&pc=="PAPER"||human=="PAPER"&&pc=="SCICCORS"||human=="SCICCORS"&&pc=="ROCK"){
-        moreinfo.textContent="LOSE";
+        moreinfo.textContent=`${human} loses to ${pc}`;
         loseCounter++;
     }else{
-        moreinfo.textContent="WIN";
+        moreinfo.textContent=`${human} beats ${pc}`;
         counter++;
     } 
-    score.textContent=`PC(${loseCounter}): ${pc}\tHuman(${counter}): ${human}`;
-    if(loseCounter>=3||counter>=3)
+    score.textContent=`Your score: ${counter} | Computer score: ${loseCounter} | Round: ${round}`;
+    const p=document.createElement('p');
+    p.innerHTML=moreinfo.textContent;
+    log.appendChild(p);
+    if(loseCounter>=5||counter>=5)
         winner();
-
 }
 let counter=0;
 let loseCounter=0;
-let gameState=0;
-
-const buttons=document.querySelectorAll('button');
+let round=0;
+const buttons=document.querySelectorAll('.game');
 const score=document.querySelector('.score')
-console.log(score);
+const restart=document.querySelector('.restart');
+const log=document.querySelector('.log');
+restart.disabled=true;
 const moreinfo=document.querySelector('.moreinfo')
 buttons.forEach((button)=>{
-    button.addEventListener('click',(e)=>playRound(e.target.className.toUpperCase()));
+    button.addEventListener('click',(e)=>
+    playRound(e.target.id.toUpperCase(),e));
 })
+restart.addEventListener('click',newGame)
 
 
 

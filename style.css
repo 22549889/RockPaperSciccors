@@ -14,7 +14,6 @@ body{
 }
 .info{
     display: flex;
-    justify-content: flex-start;
     width: 100%;
     gap: 32px;
 }
@@ -35,11 +34,27 @@ body{
 .buttons button{
     height: 50%;
     width: 25%;
+    /* cursor: pointer; */
 }
 .info button{
     height: 50%;
     width: 25%;
 }
+.info .restart{
+    height: 64px;
+    width: 128px;
+}
 i{
     font-size: 3vw;
+    pointer-events: none;
+}
+.log{
+    background-color: aqua;
+    height: 50%;
+    width: 25%;
+    margin-left: auto;
+    overflow: auto;
+}
+.bottom{
+    justify-self: flex-start
 }
